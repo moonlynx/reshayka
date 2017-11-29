@@ -1,0 +1,101 @@
+#game-board {
+  width: 400px;
+  height: 600px;
+  border-radius: 10px;
+}
+
+.settings {
+  position: absolute;
+  width: 80%;
+  /*margin: auto;*/
+  left: 8%;
+  padding: 5px;
+  background-color: lightblue;
+  border: 1px solid black;
+}
+
+.settings__settings-title {
+  text-align: center;
+  color: blue;
+  font-size: 1.5em;
+}
+
+.settings__settings-block__operators span:first-child {
+  display: block;
+}
+
+.settings__settings-block__operators label {
+  display: inline-block;
+  width: 40%;
+  margin: 5px;
+  font-size: 0.8em;
+}
+
+.settings__settings-block__max-number-checkbox {
+  font-size: 0.8em;
+}
+
+.settings__settings-block__max-number-block {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.settings__settings-block__max-number-block input {
+  position: absolute;
+  left: 87%;
+  width: 10%;
+}
+
+.settings__settings-block {
+  display:none;
+}
+
+.settings:hover .settings__settings-block {
+  display: block;
+}
+
+.score {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 10%;
+}
+
+.score__correct {
+  color: green;
+}
+
+.score__incorrect {
+  color: red;
+}
+
+.example, .answer, .motiv {
+  display: table;
+  width: 90%;
+  height: 15%;
+  margin: 2% auto;
+  text-align: center;
+}
+
+.example span,
+.answer span,
+.motiv span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 2em;
+}
+
+.answer span {
+  border-bottom: 1px solid black;
+}
+
+.keyboard {
+  margin: auto;
+  width: 90%;
+}
+
+.keyboard button {
+  margin: 1.5%;
+  line-height: 2em;
+  width: 30%;
+}
