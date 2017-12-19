@@ -4,11 +4,10 @@ require(["components/settings",
         "components/example",
         "components/answer",
         "components/keyboard",
-        "helpers/kbEvents",
         "helpers/gameUpdater",
         "models/config"],
 
-function(settings, score, motiv, example, answer, keyboard, kbEvents, updater, conf) {
+function(settings, score, motiv, example, answer, keyboard, updater, conf) {
 
     var root = document.querySelectorAll("#" + conf.rootId)[0];
 
@@ -17,7 +16,7 @@ function(settings, score, motiv, example, answer, keyboard, kbEvents, updater, c
     root.appendChild(motiv.createBlock());
     root.appendChild(example.createBlock());
     root.appendChild(answer.createBlock());
-    root.appendChild(keyboard(kbEvents.clickHandle));
+    root.appendChild(keyboard.createBlock());
     
     updater.updateOutput();
 });
