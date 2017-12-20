@@ -1,4 +1,4 @@
-define(["helpers/kbEvents"],
+define(["helpers/keyboardEvents"],
   
 function(kbEvents) {
 
