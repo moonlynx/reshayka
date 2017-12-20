@@ -21,9 +21,9 @@ function(kbEvents) {
     keyboardBlock.appendChild(button);
   });
 
-  function createBlock() {
-    return keyboardBlock;
-  }
-
-  return {createBlock: createBlock};
+  return {
+    createBlock: function() {
+      return keyboardBlock;
+    }
+  };
 });

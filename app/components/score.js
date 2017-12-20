@@ -25,21 +25,17 @@ define(function() {
   scoreBlock.appendChild(dividerField);
   scoreBlock.appendChild(incorrectAnswersField);
 
-  function createBlock() {
-    return scoreBlock;
-  }
-
-  function setCorrectAnswers(correctAnswers) {
-    correctAnswersField.childNodes[0].data = correctAnswers;
-  }
-
-  function setIncorrectAnswers(incorrectAnswers) {
-    incorrectAnswersField.childNodes[0].data = incorrectAnswers;
-  }
-
   return {
-          createBlock: createBlock,
-          setCorrectAnswers: setCorrectAnswers,
-          setIncorrectAnswers: setIncorrectAnswers
-         };
+    createBlock: function() {
+      return scoreBlock;
+    },
+
+    setCorrectAnswers: function(correctAnswers) {
+      correctAnswersField.childNodes[0].data = correctAnswers;
+    },
+
+    setIncorrectAnswers: function(incorrectAnswers) {
+      incorrectAnswersField.childNodes[0].data = incorrectAnswers;
+    }
+  };
 });

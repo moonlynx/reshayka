@@ -110,6 +110,6 @@ function(sEvents) {
   };
 
   return {
-          createBlock: getSettingsBlock
-         }
+    createBlock: getSettingsBlock
+  }
 });
