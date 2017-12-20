@@ -60,16 +60,16 @@ function(mathgen, gState, words, sEvents) {
   
       } else {
         switch(operator) {
-          case '+':
+          case "+":
             number = sEvents.getAddMaxNumber();
             break;
-          case '-':
+          case "-":
             number = sEvents.getSubMaxNumber();
             break;
-          case '*':
+          case "*":
             number = sEvents.getMulMaxNumber();
             break;
-          case '/':
+          case "/":
             number = sEvents.getDivMaxNumber();
             break;
           default:

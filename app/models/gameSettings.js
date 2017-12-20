@@ -1,5 +1,5 @@
 define({
-  operators: ['+'],
+  operators: ["+"],
   maxExampleNumber: 10,
   maxNumberForAll: false,
   addMaxNumber: 10,
