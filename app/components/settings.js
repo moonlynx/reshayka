@@ -18,7 +18,7 @@ function(sEvents) {
 
     labelField.appendChild(labelText);
     numberInput.type = "text";
-    numberInput.maxlength = 3;
+    numberInput.maxLength = 3;
     numberBlock.appendChild(labelField);
     numberBlock.appendChild(numberInput);
     numberBlock.className = NUMBER_BLOCK_CLASS_NAME;
