@@ -10,11 +10,11 @@ function(gameenv, updater) {
       updater.updateStateGame();
         
     } else if (value === "C") {
-      gameenv.var.answer = "";
+      gameenv.answer = "";
       updater.updateAnswerText();
 
     } else {
-      gameenv.var.answer += value;
+      gameenv.answer += value;
       updater.updateAnswerText();
     }
   }

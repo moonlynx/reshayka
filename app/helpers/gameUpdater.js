@@ -39,43 +39,43 @@ function(score, motiv, example, answer, mathgen, gameenv) {
   }
 
   function checkAnswer() {
-    return mathgen.getAnswer(gameenv.var.example) === parseInt(gameenv.var.answer);
+    return mathgen.getAnswer(gameenv.example) === parseInt(gameenv.answer);
   }
 
   function increaseAnswersCounter(isTrue) {
     if (isTrue) {
-      gameenv.var.correctAnswers++;
+      gameenv.correctAnswers++;
     } else {
-      gameenv.var.incorrectAnswers++;
+      gameenv.incorrectAnswers++;
     }
   }
 
   function getMotivWords(isTrue) {
     if (isTrue) {
-      gameenv.var.motiv = getGoodWords();
+      gameenv.motiv = getGoodWords();
     } else {
-      gameenv.var.motiv = getBadWords();
+      gameenv.motiv = getBadWords();
     }
   }
 
   function updateStateGame() {
     increaseAnswersCounter(checkAnswer());
     getMotivWords(checkAnswer());
-    gameenv.var.example = mathgen.getExample("+", 20);
-    gameenv.var.answer = "";
+    gameenv.example = mathgen.getExample("+", 20);
+    gameenv.answer = "";
     updateOutput();
   }
 
   function updateOutput() {
-    score.setCorrectAnswers(gameenv.var.correctAnswers);
-    score.setIncorrectAnswers(gameenv.var.incorrectAnswers);
-    motiv.setText(gameenv.var.motiv);
-    example.setText(gameenv.var.example);
-    answer.setText(gameenv.var.answer);
+    score.setCorrectAnswers(gameenv.correctAnswers);
+    score.setIncorrectAnswers(gameenv.incorrectAnswers);
+    motiv.setText(gameenv.motiv);
+    example.setText(gameenv.example);
+    answer.setText(gameenv.answer);
   }
 
   function updateAnswerText() {
-    answer.setText(gameenv.var.answer);
+    answer.setText(gameenv.answer);
   }
 
   return {updateStateGame: updateStateGame,
