@@ -99,3 +99,7 @@
   line-height: 2em;
   width: 30%;
 }
+
+.keyboard__button_red {
+  color: red;
+}
