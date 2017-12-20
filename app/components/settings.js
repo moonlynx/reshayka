@@ -1,4 +1,6 @@
-define(function() {
+define(["helpers/settingEvents"],
+
+function(sEvents) {
 
   var SETTINGS_CLASS_NAME = "settings",
       SETTINGS_BLOCK_CLASS_NAME = "settings__settings-block",
