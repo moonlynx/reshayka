@@ -1,7 +1,7 @@
-define(["models/gameEnviroment",
+define(["helpers/stateEvents",
         "helpers/gameUpdater"], 
 
-function(gameenv, updater) {
+function(sEvents, updater) {
   
   function clickHandle(button) {
     var value = button.childNodes[0].data;
@@ -10,11 +10,13 @@ function(gameenv, updater) {
       updater.updateStateGame();
         
     } else if (value === "C") {
-      gameenv.var.answer = "";
+      sEvents.clearAnswer();
       updater.updateAnswerText();
 
     } else {
-      gameenv.var.answer += value;
+      var answer = sEvents.getAnswer();
+      
+      sEvents.setAnswer(answer + value);
       updater.updateAnswerText();
     }
   }

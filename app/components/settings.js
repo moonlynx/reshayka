@@ -1,4 +1,6 @@
-define(function() {
+define(["helpers/settingEvents"],
+
+function(sEvents) {
 
   var SETTINGS_CLASS_NAME = "settings",
       SETTINGS_BLOCK_CLASS_NAME = "settings__settings-block",
@@ -16,7 +18,7 @@ define(function() {
 
     labelField.appendChild(labelText);
     numberInput.type = "text";
-    numberInput.maxlength = 3;
+    numberInput.maxLength = 3;
     numberBlock.appendChild(labelField);
     numberBlock.appendChild(numberInput);
     numberBlock.className = NUMBER_BLOCK_CLASS_NAME;
@@ -108,6 +110,6 @@ define(function() {
   };
 
   return {
-          createBlock: getSettingsBlock
-         }
+    createBlock: getSettingsBlock
+  }
 });

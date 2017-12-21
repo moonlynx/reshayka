@@ -10,16 +10,13 @@ define(function(){
   motivField.appendChild(motivText);
   motivBlock.appendChild(motivField);
 
-  function createBlock() {
-    return motivBlock;
-  }
-
-  function setText(text) {
-    motivField.childNodes[0].data = text;
-  }
-  
   return {
-          createBlock: createBlock,
-          setText: setText
-         };
+    createBlock: function() {
+      return motivBlock;
+    },
+
+    setText: function(text) {
+      motivField.childNodes[0].data = text;
+    }
+  };
 });

@@ -10,16 +10,13 @@ define(function() {
   exampleField.appendChild(exampleText);
   exampleBlock.appendChild(exampleField);
 
-  function createBlock() {
-    return exampleBlock;
-  }
-
-  function setText(text) {
-    exampleField.childNodes[0].data = text;
-  }
-    
   return {
-          createBlock: createBlock,
-          setText: setText
-         };
+    createBlock: function() {
+      return exampleBlock;
+    },
+
+    setText: function(text) {
+      exampleField.childNodes[0].data = text;
+    }
+  };
 });

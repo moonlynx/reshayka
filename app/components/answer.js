@@ -10,16 +10,13 @@ define(function() {
   answerField.appendChild(answerText);
   answerBlock.appendChild(answerField);
 
-  function createBlock() {
-    return answerBlock;
-  }
-
-  function setText(text) {
-    answerField.childNodes[0].data = text;
-  }
-
   return {
-          createBlock: createBlock,
-          setText: setText
-         };
+    createBlock: function() {
+      return answerBlock;
+    },
+      
+    setText: function(text) {
+      answerField.childNodes[0].data = text;
+    }
+  };
 });

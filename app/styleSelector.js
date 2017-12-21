@@ -4,7 +4,7 @@ require(["models/config",
 function(conf, sc) {
 
 	var head = document.head,
-		styleTag = document.createElement('link');
+		styleTag = document.createElement("link");
 
 	styleTag.rel = "stylesheet";
 	styleTag.type = "text/css";

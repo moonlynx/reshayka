@@ -1,11 +1,13 @@
-define(["helpers/kbEvents"],
+define(["helpers/keyboardEvents"],
   
 function(kbEvents) {
 
-  var KEYBOARD_BLOCK_CLASS_NAME = "keyboard";
+  var KEYBOARD_BLOCK_CLASS_NAME = "keyboard",
+      RED_BUTTON_CLASS_NAME = "keyboard__button_red",
+      RED_BUTTON_LABEL = "C";
 
   var keyboardBlock = document.createElement("div"),
-      btnLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "C", "0", "="];
+      btnLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", RED_BUTTON_LABEL, "0", "="];
 
   keyboardBlock.className = KEYBOARD_BLOCK_CLASS_NAME;
 
@@ -17,13 +19,17 @@ function(kbEvents) {
     button.addEventListener("click", function() {
       kbEvents.clickHandle(this);
     });
-      
+    
+    if (label == RED_BUTTON_LABEL) {
+      button.className = RED_BUTTON_CLASS_NAME;
+    }
+
     keyboardBlock.appendChild(button);
   });
 
-  function createBlock() {
-    return keyboardBlock;
-  }
-
-  return {createBlock: createBlock};
+  return {
+    createBlock: function() {
+      return keyboardBlock;
+    }
+  };
 });
