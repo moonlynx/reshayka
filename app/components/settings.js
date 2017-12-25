@@ -1,6 +1,6 @@
-define(["helpers/settingEvents"],
+define(["helpers/settingHandlers"],
 
-function(sEvents) {
+function(sHandlers) {
 
   var SETTINGS_CLASS_NAME = "settings",
       SETTINGS_BLOCK_CLASS_NAME = "settings__settings-block",
@@ -19,6 +19,7 @@ function(sEvents) {
     labelField.appendChild(labelText);
     numberInput.type = "text";
     numberInput.maxLength = 3;
+    numberInput.addEventListener("change", sHandlers.changeHandler);
     numberBlock.appendChild(labelField);
     numberBlock.appendChild(numberInput);
     numberBlock.className = NUMBER_BLOCK_CLASS_NAME;
