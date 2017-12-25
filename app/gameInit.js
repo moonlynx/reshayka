@@ -11,12 +11,9 @@ function(settings, score, motiv, example, answer, keyboard, updater, conf) {
 
     var root = document.querySelectorAll("#" + conf.rootId)[0];
 
-    root.appendChild(settings.createBlock());
-    root.appendChild(score.createBlock());
-    root.appendChild(motiv.createBlock());
-    root.appendChild(example.createBlock());
-    root.appendChild(answer.createBlock());
-    root.appendChild(keyboard.createBlock());
+    [settings, score, motiv, example, answer, keyboard].forEach(function(block) {
+        root.appendChild(block.createBlock());
+    });
     
     updater.updateOutput();
 });
