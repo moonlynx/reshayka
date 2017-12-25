@@ -1,9 +1,7 @@
 define(["models/gameSettings"], 
 
 function(settings) {
-  var minNumber = 0,
-      maxNumber = 999;
-
+  
   function verifyOperator(operator) {
     settings.operators.forEach(function(item) {
       if (item == operator) {
@@ -15,6 +13,11 @@ function(settings) {
   }
 
   function checkNumber(number) {
+    var minNumber = 10,
+        maxNumber = 999;
+        
+    number = ~~number;
+
     if (number < minNumber) {
       return minNumber;
 
@@ -24,6 +27,14 @@ function(settings) {
     } else {
       return number;
     }
+  }
+
+  function setMaxNumber(number) {
+    settings.maxExampleNumber = checkNumber(number);
+  }
+
+  function getMaxNumber() {
+    return settings.maxExampleNumber;
   }
 
   return {
@@ -91,6 +102,33 @@ function(settings) {
       
     setDivMaxNumber: function(number) {
       settings.divMaxNumber = checkNumber(number);
+    },
+
+    maxNumberChangeHandler: function(event) {
+      setMaxNumber(event.target.value);
+      event.target.value = getMaxNumber();
+/*
+      switch (operator) {
+        case "+":
+          setAddMaxNumber(number);
+          event.target.value = getAddMaxNumber();
+          break;
+        case "-":
+          setSubMaxNumber(number);
+          event.target.value = getSubMaxNumber();
+          break;
+        case "*":
+          setMulMaxNumber(number);
+          event.target.value = getMulMaxNumber();
+          break;
+        case "/":
+          setDivMaxNumber(number);
+          event.target.value = getDivMaxNumber();
+          break;
+        default:
+          break;
+          
+      }*/
     }
   }  
 });
