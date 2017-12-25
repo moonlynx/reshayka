@@ -21,5 +21,5 @@ function(sEvents, updater) {
     }
   }
 
-  return {clickHandle: clickHandle};
+  return {clickHandler: clickHandler};
 });
