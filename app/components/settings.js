@@ -1,6 +1,4 @@
-define(["helpers/settingHandlers"],
-
-function(sHandlers) {
+define(function() {
 
   var SETTINGS_CLASS_NAME = "settings",
       SETTINGS_BLOCK_CLASS_NAME = "settings__settings-block",
@@ -8,6 +6,12 @@ function(sHandlers) {
       NUMBER_BLOCK_CLASS_NAME = "settings__settings-block__max-number-block",
       MAX_NUMBER_CHECKBOX_CLASS_NAME = "settings__settings-block__max-number-checkbox",
       OPERATORS_BLOCK_CLASS_NAME = "settings__settings-block__operators";
+
+  var activeObjects = {
+    "operatorFields": [],
+    "maxNumberFields": [],
+    "maxNumberCheckBox": null,
+  };
 
   function getMaxNumberField(label) {
 
@@ -19,10 +23,11 @@ function(sHandlers) {
     labelField.appendChild(labelText);
     numberInput.type = "text";
     numberInput.maxLength = 3;
-    numberInput.addEventListener("change", sHandlers.changeHandler);
     numberBlock.appendChild(labelField);
     numberBlock.appendChild(numberInput);
     numberBlock.className = NUMBER_BLOCK_CLASS_NAME;
+
+    activeObjects["maxNumberFields"].push(numberInput);
 
     return numberBlock;
   };
@@ -39,6 +44,8 @@ function(sHandlers) {
     checkBoxBlock.appendChild(labelField);
     checkBoxBlock.appendChild(checkBox);
     checkBoxBlock.className = MAX_NUMBER_CHECKBOX_CLASS_NAME;
+
+    activeObjects["maxNumberCheckBox"] = checkBox;
 
     return checkBoxBlock;
   };
@@ -79,6 +86,8 @@ function(sHandlers) {
 
         field.appendChild(checkbox);
         field.appendChild(nameField);
+
+        activeObjects["operators"].push(checkbox);
 
         operatorsBlock.appendChild(field);
     });
