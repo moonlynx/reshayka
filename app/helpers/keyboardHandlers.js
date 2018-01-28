@@ -3,7 +3,7 @@ define(["helpers/stateEvents",
 
 function(sEvents, updater) {
   
-  function clickHandle(button) {
+  function clickHandler(button) {
     var value = button.childNodes[0].data;
         
     if (value === "=") {
@@ -21,5 +21,5 @@ function(sEvents, updater) {
     }
   }
 
-  return {clickHandle: clickHandle};
+  return {clickHandler: clickHandler};
 });

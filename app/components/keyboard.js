@@ -1,6 +1,6 @@
-define(["helpers/keyboardEvents"],
+define(["helpers/keyboardHandlers"],
   
-function(kbEvents) {
+function(kbHandlers) {
 
   var KEYBOARD_BLOCK_CLASS_NAME = "keyboard",
       RED_BUTTON_CLASS_NAME = "keyboard__button_red",
@@ -17,7 +17,7 @@ function(kbEvents) {
 
     button.appendChild(btnText);
     button.addEventListener("click", function() {
-      kbEvents.clickHandle(this);
+      kbHandlers.clickHandler(this);
     });
     
     if (label == RED_BUTTON_LABEL) {
