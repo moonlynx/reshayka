@@ -5,13 +5,35 @@ define(function() {
       TITLE_BLOCK_CLASS_NAME = "settings__settings-title",
       NUMBER_BLOCK_CLASS_NAME = "settings__settings-block__max-number-block",
       MAX_NUMBER_CHECKBOX_CLASS_NAME = "settings__settings-block__max-number-checkbox",
-      OPERATORS_BLOCK_CLASS_NAME = "settings__settings-block__operators";
+      OPERATORS_BLOCK_CLASS_NAME = "settings__settings-block__operators",
+      MAX_LENGTH_INPUT_FIELDS = 3;
 
-  var activeObjects = {
-    "operatorFields": [],
-    "maxNumberFields": [],
-    "maxNumberCheckBox": null,
-  };
+  var activeObjects = (function() {
+    var operatorFields = [],
+        maxNumberFields = [],
+        maxNumberCheckBox = null;
+
+    return {
+      addOperatorField: function(field) {
+        operatorFields.push(field);
+      },
+      addMaxNumberField: function(field) {
+        maxNumberFields.push(field);
+      },
+      setMaxNumberCheckBox: function(field) {
+        maxNumberCheckBox = field;
+      },
+      getOperatorFields: function() {
+        return operatorFields;
+      },
+      getMaxNumberFields: function() {
+        return maxNumberFields;
+      },
+      getMaxNumberCheckBox: function() {
+        return maxNumberCheckBox;
+      }
+    }
+  })();
 
   function getMaxNumberField(label) {
 
@@ -22,12 +44,12 @@ define(function() {
 
     labelField.appendChild(labelText);
     numberInput.type = "text";
-    numberInput.maxLength = 3;
+    numberInput.maxLength = MAX_LENGTH_INPUT_FIELDS;
     numberBlock.appendChild(labelField);
     numberBlock.appendChild(numberInput);
     numberBlock.className = NUMBER_BLOCK_CLASS_NAME;
 
-    activeObjects["maxNumberFields"].push(numberInput);
+    activeObjects.addMaxNumberField(numberInput);
 
     return numberBlock;
   };
@@ -45,7 +67,7 @@ define(function() {
     checkBoxBlock.appendChild(checkBox);
     checkBoxBlock.className = MAX_NUMBER_CHECKBOX_CLASS_NAME;
 
-    activeObjects["maxNumberCheckBox"] = checkBox;
+    activeObjects.setMaxNumberCheckBox(checkBox);
 
     return checkBoxBlock;
   };
@@ -87,7 +109,7 @@ define(function() {
         field.appendChild(checkbox);
         field.appendChild(nameField);
 
-        activeObjects["operators"].push(checkbox);
+        activeObjects.addOperatorField(checkbox);
 
         operatorsBlock.appendChild(field);
     });
@@ -120,6 +142,11 @@ define(function() {
   };
 
   return {
-    createBlock: getSettingsBlock
+    createBlock: getSettingsBlock,
+    activeObjects: {
+      getOperatorFields: activeObjects.getOperatorFields,
+      getMaxNumberFields: activeObjects.getMaxNumberFields,
+      getMaxNumberCheckBox: activeObjects.getMaxNumberCheckBox
+    }
   }
 });

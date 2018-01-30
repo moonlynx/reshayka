@@ -1,6 +1,4 @@
-define(["helpers/keyboardHandlers"],
-  
-function(kbHandlers) {
+define(function() {
 
   var KEYBOARD_BLOCK_CLASS_NAME = "keyboard",
       RED_BUTTON_CLASS_NAME = "keyboard__button_red",
@@ -8,6 +6,19 @@ function(kbHandlers) {
 
   var keyboardBlock = document.createElement("div"),
       btnLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", RED_BUTTON_LABEL, "0", "="];
+      
+  var activeObjects = (function() {
+    var buttons = [];
+
+    return {
+      addButton: function(button) {
+        buttons.push(button);
+      },
+      getButtons: function() {
+        return buttons;
+      }
+    }
+  })();
 
   keyboardBlock.className = KEYBOARD_BLOCK_CLASS_NAME;
 
@@ -16,9 +27,6 @@ function(kbHandlers) {
         btnText = document.createTextNode(label);
 
     button.appendChild(btnText);
-    button.addEventListener("click", function() {
-      kbHandlers.clickHandler(this);
-    });
     
     if (label == RED_BUTTON_LABEL) {
       button.className = RED_BUTTON_CLASS_NAME;
@@ -30,6 +38,9 @@ function(kbHandlers) {
   return {
     createBlock: function() {
       return keyboardBlock;
+    },
+    activeObjects: {
+      getButtons: activeObjects.getButtons
     }
   };
 });
