@@ -10,19 +10,36 @@ require(["components/settings",
 
 function(settings, score, motiv, example, answer, keyboard, updater, handlers, conf) {
 
-    var root = document.querySelectorAll("#" + conf.rootId)[0],
-        kbButtons = keyboard.activeObjects.getButtons(),
-        operatorFields = settings.activeObjects.getOperatorFields(),
-        maxNumberFields = settings.activeObjects.getMaxNumberFields(),
-        checkbox = settings.activeObjects.getMaxNumberCheckBox();
+    function fillGameBoard() {
+        var root = document.querySelectorAll("#" + conf.rootId)[0];
 
-    [settings, score, motiv, example, answer, keyboard].forEach(function(block) {
-        root.appendChild(block.createBlock());
-    });
+        [settings, score, motiv, example, answer, keyboard].forEach(function(block) {
+            root.appendChild(block.createBlock());
+        });
+    }
+    
+    function addGameLogic() {
+        var checkbox = settings.activeObjects.getMaxNumberCheckBox(),
+            kbButtons = keyboard.activeObjects.getButtons(),
+            operatorFields = settings.activeObjects.getOperatorFields(),
+            maxNumberFields = settings.activeObjects.getMaxNumberFields();
 
-    kbButtons.forEach(function(button){
-        button.addEventListener("click", handlers.btnClickHandler);
-    });
+        kbButtons.forEach(function(button){
+            button.addEventListener("click", handlers.btnClickHandler);
+        });
         
-    updater.updateOutput();
+        checkbox.addEventListener("click", function(e) {
+            handlers.mnCheckBoxClickHandler(maxNumberFields, e);
+        });
+    }
+
+    function init() {
+        var newGame = true;
+
+        fillGameBoard();
+        addGameLogic();
+        updater.updateOutput();
+    }    
+        
+    init();
 });
