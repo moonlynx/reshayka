@@ -1,7 +1,8 @@
 define(["helpers/stateEvents",
+        "helpers/settingEvents",
         "helpers/gameUpdater"], 
 
-function(sEvents, updater) {
+function(eStates, eSettings, updater) {
   
   function clickHandler(button) {
     var value = button.childNodes[0].data;
@@ -10,13 +11,13 @@ function(sEvents, updater) {
       updater.updateStateGame();
         
     } else if (value === "C") {
-      sEvents.clearAnswer();
+      eState.clearAnswer();
       updater.updateAnswerText();
 
     } else {
-      var answer = sEvents.getAnswer();
+      var answer = eState.getAnswer();
       
-      sEvents.setAnswer(answer + value);
+      eState.setAnswer(answer + value);
       updater.updateAnswerText();
     }
   }
