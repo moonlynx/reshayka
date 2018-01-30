@@ -4,23 +4,24 @@ define(["helpers/stateEvents",
 
 function(eStates, eSettings, updater) {
   
-  function clickHandler(button) {
-    var value = button.childNodes[0].data;
-        
+  function btnClickHandler(e) {
+    var value = e.target.childNodes[0].data;
+    
+    console.log(value);  
     if (value === "=") {
       updater.updateStateGame();
         
     } else if (value === "C") {
-      eState.clearAnswer();
+      eStates.clearAnswer();
       updater.updateAnswerText();
 
     } else {
-      var answer = eState.getAnswer();
+      var answer = eStates.getAnswer();
       
-      eState.setAnswer(answer + value);
+      eStates.setAnswer(answer + value);
       updater.updateAnswerText();
     }
   }
 
-  return {clickHandler: clickHandler};
+  return {btnClickHandler: btnClickHandler};
 });

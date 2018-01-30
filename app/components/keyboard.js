@@ -26,8 +26,9 @@ define(function() {
     var button = document.createElement("button"),
         btnText = document.createTextNode(label);
 
+    activeObjects.addButton(button);
     button.appendChild(btnText);
-    
+        
     if (label == RED_BUTTON_LABEL) {
       button.className = RED_BUTTON_CLASS_NAME;
     }
