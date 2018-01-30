@@ -23,5 +23,29 @@ function(eStates, eSettings, updater) {
     }
   }
 
-  return {btnClickHandler: btnClickHandler};
+  function mnCheckBoxClickHandler(fields, e) {
+    console.log(e.target.checked);
+    if (e.target.checked) {
+      for(var i = 1; i < fields.length; i++) {
+        fields[i].disabled = true;        
+      }
+    } else {
+      for(var i = 1; i < fields.length; i++) {
+        fields[i].disabled = false;
+      }
+    }
+  }
+
+  function opCheckBoxClickHandler(e) {
+
+  }
+
+  function mnChangeHandler(e) {
+    var value = e.target.value;
+  }
+
+  return {
+    btnClickHandler: btnClickHandler,
+    mnCheckBoxClickHandler: mnCheckBoxClickHandler
+  };
 });
