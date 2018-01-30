@@ -11,7 +11,7 @@ define(function() {
   var activeObjects = (function() {
     var operatorFields = [],
         maxNumberFields = [],
-        maxNumberCheckBox = null;
+        maxNumberCheckBox;
 
     return {
       addOperatorField: function(field) {
@@ -21,7 +21,7 @@ define(function() {
         maxNumberFields.push(field);
       },
       setMaxNumberCheckBox: function(field) {
-        maxNumberCheckBox = field;
+        maxNumberCheckBox = field;        
       },
       getOperatorFields: function() {
         return operatorFields;
@@ -68,7 +68,7 @@ define(function() {
     checkBoxBlock.className = MAX_NUMBER_CHECKBOX_CLASS_NAME;
 
     activeObjects.setMaxNumberCheckBox(checkBox);
-
+    
     return checkBoxBlock;
   };
 
@@ -140,7 +140,7 @@ define(function() {
 
     return settings;
   };
-
+  
   return {
     createBlock: getSettingsBlock,
     activeObjects: {
