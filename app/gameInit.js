@@ -10,36 +10,26 @@ require(["components/settings",
 
 function(settings, score, motiv, example, answer, keyboard, updater, handlers, conf) {
 
-    function fillGameBoard() {
-        var root = document.querySelectorAll("#" + conf.rootId)[0];
+    var root = document.querySelectorAll("#" + conf.rootId)[0],
+        mnCheckBox,
+        kbButtons,
+        operatorFields,
+        maxNumberFields;
 
-        [settings, score, motiv, example, answer, keyboard].forEach(function(block) {
-            root.appendChild(block.createBlock());
-        });
-    }
-    
-    function addGameLogic() {
-        var checkbox = settings.activeObjects.getMaxNumberCheckBox(),
-            kbButtons = keyboard.activeObjects.getButtons(),
-            operatorFields = settings.activeObjects.getOperatorFields(),
-            maxNumberFields = settings.activeObjects.getMaxNumberFields();
+    [settings, score, motiv, example, answer, keyboard].forEach(function(block) {
+        root.appendChild(block.createBlock());
+    });
 
-        kbButtons.forEach(function(button){
-            button.addEventListener("click", handlers.btnClickHandler);
-        });
+    mnCheckBox = settings.activeObjects.getMaxNumberCheckBox(),
+    kbButtons = keyboard.activeObjects.getButtons(),
+    operatorFields = settings.activeObjects.getOperatorFields(),
+    maxNumberFields = settings.activeObjects.getMaxNumberFields();
+
+    kbButtons.forEach(function(button){
+        button.addEventListener("click", handlers.btnClickHandler);
+    });
         
-        checkbox.addEventListener("click", function(e) {
-            handlers.mnCheckBoxClickHandler(maxNumberFields, e);
-        });
-    }
-
-    function init() {
-        var newGame = true;
-
-        fillGameBoard();
-        addGameLogic();
-        updater.updateOutput();
-    }    
-        
-    init();
+    mnCheckBox.addEventListener("click", function(e) {
+        handlers.mnCheckBoxClickHandler(maxNumberFields, e.target);
+    });    
 });

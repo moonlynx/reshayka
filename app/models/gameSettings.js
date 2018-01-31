@@ -1,6 +1,6 @@
 define({
   operators: ["+"],
-  maxExampleNumber: 10,
+  maxExampleNumber: 20,
   maxNumberForAll: false,
   addMaxNumber: 10,
   subMaxNumber: 10,

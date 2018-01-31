@@ -23,16 +23,21 @@ function(eStates, eSettings, updater) {
     }
   }
 
-  function mnCheckBoxClickHandler(fields, e) {
-    console.log(e.target.checked);
-    if (e.target.checked) {
+  function mnCheckBoxClickHandler(fields, target) {
+    if (target.checked) {
       for(var i = 1; i < fields.length; i++) {
-        fields[i].disabled = true;        
+        fields[i].disabled = true;
+        fields[i].value = eSettings.getMaxNumber();
       }
     } else {
       for(var i = 1; i < fields.length; i++) {
         fields[i].disabled = false;
       }
+
+      fields[1].value = eSettings.getAddMaxNumber();
+      fields[2].value = eSettings.getSubMaxNumber();
+      fields[3].value = eSettings.getMulMaxNumber();
+      fields[4].value = eSettings.getDivMaxNumber();
     }
   }
 
