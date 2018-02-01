@@ -4,11 +4,12 @@ require(["components/settings",
         "components/example",
         "components/answer",
         "components/keyboard",
-        "helpers/gameUpdater",
+        "helpers/stateEvents",
+        "helpers/settingEvents",
         "helpers/handlers",
         "models/config"],
 
-function(settings, score, motiv, example, answer, keyboard, updater, handlers, conf) {
+function(settings, score, motiv, example, answer, keyboard, stateEvents, settingEvents, handlers, conf) {
 
     var root = document.querySelectorAll("#" + conf.rootId)[0],
         mnCheckBox,
@@ -31,5 +32,14 @@ function(settings, score, motiv, example, answer, keyboard, updater, handlers, c
         
     mnCheckBox.addEventListener("click", function(e) {
         handlers.mnCheckBoxClickHandler(maxNumberFields, e.target);
-    });    
+    });
+
+    score.setCorrectAnswers(stateEvents.getCorrectAnswers());
+    score.setIncorrectAnswers(stateEvents.getIncorrectAnswers());
+
+    maxNumberFields[0].value = settingEvents.getMaxNumber();
+    maxNumberFields[1].value = settingEvents.getAddMaxNumber();
+    maxNumberFields[2].value = settingEvents.getSubMaxNumber();
+    maxNumberFields[3].value = settingEvents.getMulMaxNumber();
+    maxNumberFields[4].value = settingEvents.getDivMaxNumber();    
 });
