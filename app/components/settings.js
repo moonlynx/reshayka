@@ -35,6 +35,10 @@ define(function() {
     }
   })();
 
+  function getOperators() {
+    return ["+", "-", "*", "/"];
+  }
+
   function getMaxNumberField(label) {
 
     var numberBlock = document.createElement("div"),
@@ -90,7 +94,13 @@ define(function() {
     var operatorsBlock = document.createElement("div"),
         titleField = document.createElement("span"),
         titleText = document.createTextNode("Используемые операции:"),
-        operators = ["Сложение (+)", "Вычитание (-)", "Умножение (*)", "Деление (/)"];
+        operators = getOperators(),
+        operatorLabels = {
+          "+": "Сложение (+)",
+          "-": "Вычитание (-)",
+          "*": "Умножение (*)",
+          "/": "Деление (/)"
+        };
 
     titleField.appendChild(titleText);
     operatorsBlock.appendChild(titleField);
@@ -101,7 +111,7 @@ define(function() {
         var field = document.createElement("label"),
             checkbox = document.createElement("input"),
             nameField = document.createElement("span"),
-            nameText = document.createTextNode(operator);
+            nameText = document.createTextNode(operatorLabels[operator]);
 
         nameField.appendChild(nameText);
         checkbox.type = "checkbox";
@@ -109,7 +119,10 @@ define(function() {
         field.appendChild(checkbox);
         field.appendChild(nameField);
 
-        activeObjects.addOperatorField(checkbox);
+        activeObjects.addOperatorField({
+          operator: operator,
+          field: checkbox
+        });
 
         operatorsBlock.appendChild(field);
     });
@@ -121,7 +134,13 @@ define(function() {
 
     var settings = document.createElement("div"),
         settingsBlock = document.createElement("div"),
-        operators = ["сложения", "вычитания", "умножения", "деления"];
+        operators = getOperators(),
+        operatorLabels = {
+          "+": "сложения",
+          "-": "вычитания",
+          "*": "умножения",
+          "/": "деления"
+        };
 
     settings.className = SETTINGS_CLASS_NAME;
     settingsBlock.className = SETTINGS_BLOCK_CLASS_NAME;
@@ -131,7 +150,7 @@ define(function() {
     settingsBlock.appendChild(getMaxNumberCheckBoxField());
 
     operators.forEach(function(operator) {
-      var block = getMaxNumberField("Максимальное число для " + operator + ":");
+      var block = getMaxNumberField("Максимальное число для " + operatorLabels[operator] + ":");
       settingsBlock.appendChild(block);
     });
 

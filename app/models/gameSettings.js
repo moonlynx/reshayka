@@ -1,7 +1,7 @@
 define({
-  operators: ["+"],
+  operators: ["+", "-"],
   maxExampleNumber: 20,
-  maxNumberForAll: false,
+  maxNumberForAll: true,
   addMaxNumber: 10,
   subMaxNumber: 10,
   mulMaxNumber: 10,

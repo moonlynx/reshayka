@@ -64,11 +64,11 @@ function(settings) {
       settings.maxExampleNumber = checkNumber(number);
     },
       
-    getAllNumCheckbox: function() {
+    getMaxNumberForAll: function() {
       return settings.maxNumberForAll;
     },
 
-    setAllNumCheckbox: function(isChecked) {
+    setMaxNumberForAll: function(isChecked) {
       settings.maxNumberForAll = Boolean(isChecked);
     },
   

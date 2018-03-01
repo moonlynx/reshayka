@@ -1,9 +1,9 @@
 define(["models/mathgen-amd",
         "models/gameState",
         "models/words",
-        "helpers/settingEvents"], 
+        "helpers/settingHelpers"], 
 
-function(mathgen, gState, words, sEvents) {
+function(mathgen, gameState, words, settingHelpers) {
   function getGoodWord() {
     var index = Math.floor(Math.random() * words.goodWords.length);
 
@@ -17,84 +17,84 @@ function(mathgen, gState, words, sEvents) {
   }
 
   function checkAnswer() {
-    return mathgen.getAnswer(gState.example) === Number(gState.answer);
+    return mathgen.getAnswer(gameState.example) === Number(gameState.answer);
   }
 
   return {
     increaseAnswersCounter: function() {
       if (checkAnswer()) {
-        gState.correctAnswers++;
+        gameState.correctAnswers++;
       } else {
-        gState.incorrectAnswers++;
+        gameState.incorrectAnswers++;
       }
     },
   
     getCorrectAnswers: function() {
-      return gState.correctAnswers;
+      return gameState.correctAnswers;
     },
   
     getIncorrectAnswers: function() {
-      return gState.incorrectAnswers;
+      return gameState.incorrectAnswers;
     },
   
     setMotiv: function() {
       if (checkAnswer()) {
-        gState.motiv = getGoodWord();
+        gameState.motiv = getGoodWord();
       } else {
-        gState.motiv = getBadWord();
+        gameState.motiv = getBadWord();
       }
     },
   
     getMotiv: function() {
-      return gState.motiv;
+      return gameState.motiv;
     },
   
     newExample: function() {
-      var operators = sEvents.getOperators(),
+      var operators = settingHelpers.getOperators(),
           operatorIndex = Math.floor(Math.random() * operators.length),
           operator = operators[operatorIndex],
           number;
   
-      if (sEvents.getAllNumCheckbox()) {
-        number = sEvents.getMaxNumber();
+      if (settingHelpers.getMaxNumberForAll()) {
+        number = settingHelpers.getMaxNumber();
   
       } else {
         switch(operator) {
           case "+":
-            number = sEvents.getAddMaxNumber();
+            number = settingHelpers.getAddMaxNumber();
             break;
           case "-":
-            number = sEvents.getSubMaxNumber();
+            number = settingHelpers.getSubMaxNumber();
             break;
           case "*":
-            number = sEvents.getMulMaxNumber();
+            number = settingHelpers.getMulMaxNumber();
             break;
           case "/":
-            number = sEvents.getDivMaxNumber();
+            number = settingHelpers.getDivMaxNumber();
             break;
           default:
-            number = sEvents.getMaxNumber();
+            number = settingHelpers.getMaxNumber();
             break;
         }
       }
   
-      gState.example = mathgen.getExample(operator, number);
+      gameState.example = mathgen.getExample(operator, number);
     },
   
     getExample: function() {
-      return gState.example;
+      return gameState.example;
     },
   
     clearAnswer: function() {
-      gState.answer = "";
+      gameState.answer = "";
     },
   
     getAnswer: function() {
-      return gState.answer;
+      return gameState.answer;
     },
   
     setAnswer: function(answer) {
-      gState.answer = answer;
+      gameState.answer = answer;
     }
   }  
 });
