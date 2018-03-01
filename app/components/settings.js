@@ -39,12 +39,20 @@ define(function() {
     return ["+", "-", "*", "/"];
   }
 
-  function getMaxNumberField(label) {
+  function getMaxNumberField(operator) {
 
-    var numberBlock = document.createElement("div"),
+    var operatorLabels = {
+          undefined: "Максимальное число в примере:",
+          "+": "Максимальное число для сложения:",
+          "-": "Максимальное число для вычитания:",
+          "*": "Максимальное число для умножения:",
+          "/": "Максимальное число для деления:"
+        },
+        numberBlock = document.createElement("div"),
         labelField = document.createElement("span"),
         numberInput = document.createElement("input"),
-        labelText = document.createTextNode(label);
+        labelText = document.createTextNode(operatorLabels[operator]);
+        
 
     labelField.appendChild(labelText);
     numberInput.type = "text";
@@ -53,7 +61,10 @@ define(function() {
     numberBlock.appendChild(numberInput);
     numberBlock.className = NUMBER_BLOCK_CLASS_NAME;
 
-    activeObjects.addMaxNumberField(numberInput);
+    activeObjects.addMaxNumberField({
+      operator: operator,
+      field: numberInput
+    });
 
     return numberBlock;
   };
@@ -134,23 +145,17 @@ define(function() {
 
     var settings = document.createElement("div"),
         settingsBlock = document.createElement("div"),
-        operators = getOperators(),
-        operatorLabels = {
-          "+": "сложения",
-          "-": "вычитания",
-          "*": "умножения",
-          "/": "деления"
-        };
+        operators = getOperators();        
 
     settings.className = SETTINGS_CLASS_NAME;
     settingsBlock.className = SETTINGS_BLOCK_CLASS_NAME;
 
     settingsBlock.appendChild(getOperatorsBlock());
-    settingsBlock.appendChild(getMaxNumberField("Максимальное число в примере:"));
+    settingsBlock.appendChild(getMaxNumberField());
     settingsBlock.appendChild(getMaxNumberCheckBoxField());
 
     operators.forEach(function(operator) {
-      var block = getMaxNumberField("Максимальное число для " + operatorLabels[operator] + ":");
+      var block = getMaxNumberField(operator);
       settingsBlock.appendChild(block);
     });
 
