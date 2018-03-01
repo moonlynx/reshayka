@@ -18,16 +18,13 @@ function(settings, score, motiv, example, answer, keyboard, stateHelpers, settin
   function addComponentsData() {
     var operatorFields = settings.activeObjects.getOperatorFields(),
         maxNumberFields = settings.activeObjects.getMaxNumberFields(),
+        mnCheckBox = settings.activeObjects.getMaxNumberCheckBox(),
         operators = settingHelpers.getOperators();
         
     score.setCorrectAnswers(stateHelpers.getCorrectAnswers());
     score.setIncorrectAnswers(stateHelpers.getIncorrectAnswers());
     
-    maxNumberFields[0].value = settingHelpers.getMaxNumber();
-    maxNumberFields[1].value = settingHelpers.getAddMaxNumber();
-    maxNumberFields[2].value = settingHelpers.getSubMaxNumber();
-    maxNumberFields[3].value = settingHelpers.getMulMaxNumber();
-    maxNumberFields[4].value = settingHelpers.getDivMaxNumber();
+    mnCheckBox.checked = settingHelpers.getMaxNumberForAll();
 
     operatorFields.forEach(function(item) {
       if (operators.indexOf(item.operator) != -1) {
@@ -42,25 +39,30 @@ function(settings, score, motiv, example, answer, keyboard, stateHelpers, settin
 
   function updateMaxNumberFields() {
     var mnCheckBox = settings.activeObjects.getMaxNumberCheckBox(),
-        fields = settings.activeObjects.getMaxNumberFields();
+        maxNumberFields = settings.activeObjects.getMaxNumberFields(),
+        fieldsArrSize = maxNumberFields.length;
+
+    maxNumberFields[0].value = settingHelpers.getMaxNumber();
 
     if (settingHelpers.getMaxNumberForAll()) {
-      fields[0].disabled = false;
+      maxNumberFields[0].disabled = false;
 
-      for(var i = 1; i < fields.length; i++) {
-        fields[i].disabled = true;
-        fields[i].value = settingHelpers.getMaxNumber();
+      for(var i = 1; i < fieldsArrSize; i++) {
+        maxNumberFields[i].disabled = true;
+        maxNumberFields[i].value = settingHelpers.getMaxNumber();
       }
+
     } else {
-      for(var i = 1; i < fields.length; i++) {
-        fields[i].disabled = false;
+            
+      for(var i = 1; i < fieldsArrSize; i++) {
+        maxNumberFields[i].disabled = false;
       }
 
-      fields[0].disabled = true;
-      fields[1].value = settingHelpers.getAddMaxNumber();
-      fields[2].value = settingHelpers.getSubMaxNumber();
-      fields[3].value = settingHelpers.getMulMaxNumber();
-      fields[4].value = settingHelpers.getDivMaxNumber();      
+      maxNumberFields[0].disabled = true;
+      maxNumberFields[1].value = settingHelpers.getAddMaxNumber();
+      maxNumberFields[2].value = settingHelpers.getSubMaxNumber();
+      maxNumberFields[3].value = settingHelpers.getMulMaxNumber();
+      maxNumberFields[4].value = settingHelpers.getDivMaxNumber();      
     }
   }
 
