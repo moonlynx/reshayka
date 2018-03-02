@@ -102,33 +102,6 @@ function(settings) {
       
     setDivMaxNumber: function(number) {
       settings.divMaxNumber = checkNumber(number);
-    },
-
-    maxNumberChangeHandler: function(event) {
-      setMaxNumber(event.target.value);
-      event.target.value = getMaxNumber();
-/*
-      switch (operator) {
-        case "+":
-          setAddMaxNumber(number);
-          event.target.value = getAddMaxNumber();
-          break;
-        case "-":
-          setSubMaxNumber(number);
-          event.target.value = getSubMaxNumber();
-          break;
-        case "*":
-          setMulMaxNumber(number);
-          event.target.value = getMulMaxNumber();
-          break;
-        case "/":
-          setDivMaxNumber(number);
-          event.target.value = getDivMaxNumber();
-          break;
-        default:
-          break;
-          
-      }*/
     }
   }  
 });
