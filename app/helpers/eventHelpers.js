@@ -19,10 +19,26 @@ function(settings, keyboard, viewHelpers, eventHandlers) {
         maxNumberCheckbox.addEventListener("click", eventHandlers.mnCheckBoxClickHandler);
     }
 
+    function addMaxNumberHandlers() {
+        var maxNumberFields = settings.activeObjects.getMaxNumberFields();
+
+        maxNumberFields.forEach(function(maxNumberField) {
+            var operator = maxNumberField.operator;
+
+            maxNumberField.field.addEventListener("change", function(e) {
+                var value = e.target.value;                    
+
+                eventHandlers.mnChangeHandler(operator, value);                
+            })
+
+        })
+    }
+
     return {
         addHandlers: function() {
             addKeyboardHandlers();
             addMaxNumberCheckboxHandler();
+            addMaxNumberHandlers();
         }
     }
 });
