@@ -34,11 +34,25 @@ function(settings, keyboard, viewHelpers, eventHandlers) {
         })
     }
 
+    function addOperCheckBoxHandlers() {
+        var operators = settings.activeObjects.getOperatorsFields();
+
+        operators.forEach(function(operator) {
+            operator.field.addEventListener("click", function(e) {
+                var isChecked = e.target.checked;
+
+                eventHandlers.opCheckBoxClickHandler(operator.operator, isChecked);
+            })
+        })
+       
+    } 
+
     return {
         addHandlers: function() {
             addKeyboardHandlers();
             addMaxNumberCheckboxHandler();
             addMaxNumberHandlers();
+            addOperCheckBoxHandlers();
         }
     }
 });

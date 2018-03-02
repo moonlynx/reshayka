@@ -16,7 +16,7 @@ function(settings, score, motiv, example, answer, keyboard, stateHelpers, settin
   }
 
   function addComponentsData() {
-    var operatorFields = settings.activeObjects.getOperatorFields(),
+    var operatorFields = settings.activeObjects.getOperatorsFields(),
         mnCheckBox = settings.activeObjects.getMaxNumberCheckBox(),
         operators = settingHelpers.getOperators();
         
@@ -70,6 +70,17 @@ function(settings, score, motiv, example, answer, keyboard, stateHelpers, settin
     }
   }
 
+  function updateOperatorsCBs() {
+    var operators = settingHelpers.getOperators(),
+        operatorsFields = settings.activeObjects.getOperatorsFields();
+
+    operatorsFields.forEach(function(operator) {
+      if (operators.indexOf(operator.operator) != -1) {
+        operator.field.checked = true;
+      }      
+    });
+  }
+
   function updateStateGame() {
     stateHelpers.increaseAnswersCounter();
     stateHelpers.setMotiv();
@@ -96,6 +107,7 @@ function(settings, score, motiv, example, answer, keyboard, stateHelpers, settin
     updateAnswerText: updateAnswerText,
     addComponents: addComponents,
     addComponentsData: addComponentsData,
-    updateMaxNumberFields: updateMaxNumberFields
+    updateMaxNumberFields: updateMaxNumberFields,
+    updateOperatorsCBs: updateOperatorsCBs
   };
 });

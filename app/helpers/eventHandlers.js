@@ -28,8 +28,21 @@ function(stateHelpers, settingHelpers, viewHelpers) {
       viewHelpers.updateMaxNumberFields();
   }
 
-  function opCheckBoxClickHandler(e) {
+  function opCheckBoxClickHandler(operator, isChecked) {
+    var LAST_OPERATOR = "+";
 
+    if (isChecked) {
+      settingHelpers.addOperator(operator);
+    } else {
+      settingHelpers.deleteOperator(operator);
+    }
+
+    var operators = settingHelpers.getOperators();
+
+    if (operators.length < 1) {
+      settingHelpers.addOperator(LAST_OPERATOR);
+      viewHelpers.updateOperatorsCBs();
+    }
   }
 
   function mnChangeHandler(operator, value) {
@@ -56,6 +69,7 @@ function(stateHelpers, settingHelpers, viewHelpers) {
   return {
     btnClickHandler: btnClickHandler,
     mnCheckBoxClickHandler: mnCheckBoxClickHandler,
-    mnChangeHandler: mnChangeHandler
+    mnChangeHandler: mnChangeHandler,
+    opCheckBoxClickHandler:opCheckBoxClickHandler
   };
 });
