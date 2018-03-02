@@ -26,9 +26,7 @@ function(settings, keyboard, viewHelpers, eventHandlers) {
             var operator = maxNumberField.operator;
 
             maxNumberField.field.addEventListener("change", function(e) {
-                var value = e.target.value;                    
-
-                eventHandlers.mnChangeHandler(operator, value);                
+                eventHandlers.mnChangeHandler(operator, e.target);                
             })
 
         })
