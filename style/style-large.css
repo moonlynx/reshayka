@@ -1,67 +1,92 @@
-#game-board {
+#game-board
+{
+  position:absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
   width: 400px;
   height: 600px;
+  color: #490266;
+  background-color: #f1ca03;
   border-radius: 10px;
+  border: 2px solid #a35e04;
 }
 
-.settings {
+.settings
+{
   position: absolute;
   width: 80%;
-  /*margin: auto;*/
-  left: 8%;
+  top: 1px;
+  left: 0px;
+  right: 0px;
   padding: 5px;
-  background-color: lightblue;
-  border: 1px solid black;
+  margin: auto;
+  background-color: #f2b706;
+  border-radius: 3px;
+  border: 1px solid #a35e04;
 }
 
-.settings__settings-title {
+.settings__settings-title
+{
   text-align: center;
-  color: blue;
   font-size: 1.5em;
+  border-radius: 3px;
 }
 
-.settings__settings-block__operators span:first-child {
+.settings__settings-block__operators span:first-child
+{
   display: block;
 }
 
-.settings__settings-block__operators label {
+.settings__settings-block__operators label
+{
   display: inline-block;
   width: 40%;
   margin: 5px;
   font-size: 0.8em;
 }
 
-.settings__settings-block__max-number-checkbox {
+.settings__settings-block__max-number-checkbox
+{
   font-size: 0.8em;
 }
 
-.settings__settings-block__max-number-block {
+.settings__settings-block__max-number-block
+{
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.settings__settings-block__max-number-block input {
+.settings__settings-block__max-number-block input
+{
   position: absolute;
   left: 87%;
   width: 10%;
+  margin-top: -2px;
 }
 
-.settings__settings-block {
+.settings__settings-block
+{
   display:none;
 }
 
-.settings:hover .settings__settings-block {
+.settings:hover .settings__settings-block
+{
   display: block;
 }
 
-.score {
+.score
+{
   text-align: center;
   font-size: 2em;
   font-weight: bold;
   margin-top: 10%;
 }
 
-.score__correct {
+.score__correct
+{
   color: green;
 }
 
@@ -69,7 +94,8 @@
   color: red;
 }
 
-.example, .answer, .motiv {
+.example, .answer, .motiv
+{
   display: table;
   width: 90%;
   height: 15%;
@@ -79,31 +105,99 @@
 
 .example span,
 .answer span,
-.motiv span {
+.motiv span
+{
   display: table-cell;
   vertical-align: middle;
   font-size: 2em;
 }
 
-.answer span {
-  border-bottom: 1px solid black;
+.answer span
+{
+  border-bottom: 1px solid #a35e04;
 }
 
-.keyboard {
+.keyboard
+{
+  padding: 1%;
   margin: auto;
   width: 90%;
 }
 
-.keyboard button {
+.keyboard button
+{
+  display: inline-block;
+  width: 30%;
+  height: 42px;
   margin: 1.5%;
-  line-height: 2em;
+  border: 2px solid #a35e04;
   border-radius: 8px;
+  line-height: 2em;
   font-weight: bold;
   font-size: 1.1em;
   outline-style: none;
-  width: 30%;
+  background-color: #f2b706;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  cursor: pointer;
 }
 
-.keyboard__button_red {
-  color: red;
+.keyboard__button__1
+{
+  background-image: url("../images/1.png");
+}
+
+.keyboard__button__2
+{
+  background-image: url("../images/2.png");
+}
+
+.keyboard__button__3
+{
+  background-image: url("../images/3.png");
+}
+
+.keyboard__button__4
+{
+  background-image: url("../images/4.png");
+}
+
+.keyboard__button__5
+{
+  background-image: url("../images/5.png");
+}
+
+.keyboard__button__6
+{
+  background-image: url("../images/6.png");
+}
+
+.keyboard__button__7
+{
+  background-image: url("../images/7.png");
+}
+
+.keyboard__button__8
+{
+  background-image: url("../images/8.png");
+}
+
+.keyboard__button__9
+{
+  background-image: url("../images/9.png");
+}
+
+.keyboard__button__0
+{
+  background-image: url("../images/0.png");
+}
+
+.keyboard__button__equal
+{
+  background-image: url("../images/=.png");
+}
+
+.keyboard__button__C
+{
+  background-image: url("../images/c.png");
 }
