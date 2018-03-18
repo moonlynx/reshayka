@@ -5,9 +5,9 @@ define(["helpers/stateHelpers",
 function(stateHelpers, settingHelpers, viewHelpers) {
   
   function btnClickHandler(e) {
-    var value = e.target.childNodes[0].data;
+    var value = e.target.value;
      
-    if (value === "=") {
+    if (value === "equal") {
       viewHelpers.updateStateGame();
         
     } else if (value === "C") {

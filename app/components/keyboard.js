@@ -1,11 +1,11 @@
 define(function() {
 
   var KEYBOARD_BLOCK_CLASS_NAME = "keyboard",
-      RED_BUTTON_CLASS_NAME = "keyboard__button_red",
+      BUTTON_CLASS_NAME_PREFIX = "keyboard__button__",
       RED_BUTTON_LABEL = "C";
 
   var keyboardBlock = document.createElement("div"),
-      btnLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", RED_BUTTON_LABEL, "0", "="];
+      btnLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", RED_BUTTON_LABEL, "0", "equal"];
       
   var activeObjects = (function() {
     var buttons = [];
@@ -23,16 +23,15 @@ define(function() {
   keyboardBlock.className = KEYBOARD_BLOCK_CLASS_NAME;
 
   btnLabels.forEach(function(label) {
-    var button = document.createElement("button"),
-        btnText = document.createTextNode(label);
+    var button = document.createElement("button");
+        // btnText = document.createTextNode(label);
 
     activeObjects.addButton(button);
-    button.appendChild(btnText);
+    //button.appendChild(btnText);
         
-    if (label == RED_BUTTON_LABEL) {
-      button.className = RED_BUTTON_CLASS_NAME;
-    }
-
+    button.className = BUTTON_CLASS_NAME_PREFIX + label;
+    button.value = label;
+    
     keyboardBlock.appendChild(button);
   });
 
