@@ -45,22 +45,46 @@ function(stateHelpers, settingHelpers, viewHelpers) {
     }
   }
 
-  function mnChangeHandler(operator, value) {
+  function mnChangeHandler(operator, target) {
     switch (operator) {
       case "+": 
-        settingHelpers.setAddMaxNumber(value);
+        settingHelpers.setAddMaxNumber(target.value);
+        
+        if (target.value != settingHelpers.getAddMaxNumber()) {
+          target.value = settingHelpers.getAddMaxNumber();
+        }
+        
         break;
+      
       case "-": 
-        settingHelpers.setSubMaxNumber(value);
+        settingHelpers.setSubMaxNumber(target.value);
+        
+        if (target.value != settingHelpers.getSubMaxNumber()) {
+          target.value = settingHelpers.getSubMaxNumber();
+        }
+        
         break;
+
       case "*": 
-        settingHelpers.setMulMaxNumber(value);
+        settingHelpers.setMulMaxNumber(target.value);
+        
+        if (target.value != settingHelpers.getMulMaxNumber()) {
+          target.value = settingHelpers.getMulMaxNumber();
+        }
+        
         break;
+
       case "/": 
-        settingHelpers.setDivMaxNumber(value);
+        settingHelpers.setDivMaxNumber(target.value);
+        
+        if (target.value != settingHelpers.getMulMaxNumber()) {
+          target.value = settingHelpers.getMulMaxNumber();
+        }
+        
         break;
+
       default: 
-        settingHelpers.setMaxNumber(value);
+        settingHelpers.setMaxNumber(target.value);
         viewHelpers.updateMaxNumberFields();
         break;
     }
