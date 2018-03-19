@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Russo One";
+  src: url("../fonts/RussoOne-Regular.ttf");
+}
+
 #game-board
 {
   position:absolute;
@@ -10,22 +15,23 @@
   height: 600px;
   color: #490266;
   background-color: #f1ca03;
-  border-radius: 10px;
   border: 2px solid #a35e04;
+  border-radius: 10px;
+  font-family: 'Russo One', sans-serif;
 }
 
 .settings
 {
   position: absolute;
   width: 80%;
-  top: 1px;
+  top: 0px;
   left: 0px;
   right: 0px;
   padding: 5px;
   margin: auto;
   background-color: #f2b706;
-  border-radius: 3px;
   border: 1px solid #a35e04;
+  border-radius: 3px;  
 }
 
 .settings__settings-title
@@ -45,18 +51,19 @@
   display: inline-block;
   width: 40%;
   margin: 5px;
-  font-size: 0.8em;
 }
 
-.settings__settings-block__max-number-checkbox
+.settings__settings-block__max-number-checkbox,
+.settings__settings-block__operators label
 {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .settings__settings-block__max-number-block
 {
   margin-top: 5px;
   margin-bottom: 5px;
+  font-size: 0.8em;
 }
 
 .settings__settings-block__max-number-block input
@@ -64,12 +71,21 @@
   position: absolute;
   left: 87%;
   width: 10%;
-  margin-top: -2px;
+  height: 15px;
+  margin-top: -3px;
+  color: #490266;
+  font-family: 'Russo One', sans-serif;
+  border: 1px solid #a35e04;
+}
+
+.settings__settings-block__max-number-block input:hover
+{
+  background-color: #f1ca03;
 }
 
 .settings__settings-block
 {
-  display:none;
+  display: none;
 }
 
 .settings:hover .settings__settings-block
@@ -119,7 +135,6 @@
 
 .keyboard
 {
-  padding: 1%;
   margin: auto;
   width: 90%;
 }
@@ -129,12 +144,9 @@
   display: inline-block;
   width: 30%;
   height: 42px;
-  margin: 1.5%;
+  margin: 1.5% 1.5% 0% 1.5%;
   border: 2px solid #a35e04;
   border-radius: 8px;
-  line-height: 2em;
-  font-weight: bold;
-  font-size: 1.1em;
   outline-style: none;
   background-color: #f2b706;
   background-repeat: no-repeat;
